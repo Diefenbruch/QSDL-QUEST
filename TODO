@@ -1,0 +1,5 @@
+(1) Option einfuehren, damit QUEST entweder aus den Environmentvariablen
+    oder aus einer Konfigurationsdatei parametrisiert werden kann.
+    Auf diese Weise können die in XQUEST gemachten Einstellungen in QUEST
+    weiterverwendet werden (wichtig in Scripten).
+
