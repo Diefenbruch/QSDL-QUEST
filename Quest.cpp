@@ -1,7 +1,7 @@
 /****************************************************************************
  *                 Modul: $RCSfile: Quest.cpp,v $
  *
- * $Author: hirche $
+ * Author: Marc Diefenbruch
  * $Date: 1998/02/17 17:29:20 $
  * $Revision: 1.1 $
  *
