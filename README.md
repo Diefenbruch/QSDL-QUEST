@@ -41,7 +41,7 @@ Installation of QUEST:
 Results:
 * /home/qsdl/include - C++ include files to compile quest
 * /home/qsdl/lib - libraries used to compile and link quest
-* /home/qsdl/<arch>/bin - quest executable (start with -h to see paramerter description)
+* /home/qsdl/[arch]/bin - quest executable (start with -h to see paramerter description)
 * /home/qsdl/src - quest C++ source files
 
 Install Example specifications:
@@ -50,15 +50,15 @@ Install Example specifications:
 2. Be in /home/qsdl directory
 3. git clone https://github.com/Diefenbruch/QSDL-SPECS specifications
 
-Example (replace <arch> with your architecture directory):
+Example (replace [arch] with your architecture directory):
 
-1. Run /home/qsdl/bin/<arch>/quest -vwgmiyxpel srs.pr
+1. Run /home/qsdl/bin/[arch]/quest -vwgmiyxpel srs.pr
 2. switch to /home/qsdl/output/srs
 3. make 
-4. Run /home/qsdl/srs/obj/<arch>/srs -h    (help message)
+4. Run /home/qsdl/srs/obj/[arch]/srs -h    (help message)
 5. Set environment variables for the experiment: source /home/qsdl/specifications/srs.sh
-5. Simulation run: /home/qsdl/srs/obj/<arch>/srs -vys -e 1 -z 100
-6. Validation run: /home/qsdl/srs/obj/<arch>/srs -vyr -e 1 -p 18 -t msc -u -i 1 -s bs
-7. Verification run: /home/qsdl/srs/obj/<arch>/srs -vyv -e 1 -p 18 -t msc -u -i 1 -s fs -r "[]<>inUDCon"
+5. Simulation run: /home/qsdl/srs/obj/[arch]/srs -vys -e 1 -z 100
+6. Validation run: /home/qsdl/srs/obj/[arch]/srs -vyr -e 1 -p 18 -t msc -u -i 1 -s bs
+7. Verification run: /home/qsdl/srs/obj/[arch]/srs -vyv -e 1 -p 18 -t msc -u -i 1 -s fs -r "[]<>inUDCon"
 
 
