@@ -206,7 +206,7 @@ CHMOD = /bin/chmod
                          # Befehl zum Aendern der Dateiattribute
 TOUCH = touch
                          # Befehl zum Aktualisieren des Dateidatums
-MKDIR = mkdir
+MKDIR = mkdir -p
                          # Befehl zum Erzeugen von Directories
 ifeq ($(TOOLS), GNU)
 
@@ -315,7 +315,7 @@ $(LOUTPUT): $(OBJDIR)/Quest.o
 	$(AR) $(ARFLAGS) $(LOUTPUT) $(OBJDIR)/Quest.o \
 		2>> $(LOGFILE)
 
-$(OBJDIR)/%.o: %.cpp 
+$(OBJDIR)/%.o: %.cpp $(OBJDIR)
 	@echo Compiling $< ...
 	$(C++) -c $(CFLAGS) $(TFLAGS) $(PFLAGS) $(DEFINES) $(INCLUDES) $< -o $@ 2>> $(LOGFILE)
 
