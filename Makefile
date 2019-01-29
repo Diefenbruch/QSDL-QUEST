@@ -315,7 +315,7 @@ $(LOUTPUT): $(OBJDIR)/Quest.o
 	$(AR) $(ARFLAGS) $(LOUTPUT) $(OBJDIR)/Quest.o \
 		2>> $(LOGFILE)
 
-$(OBJDIR)/%.o: %.cpp $(OBJDIR)
+$(OBJDIR)/%.o: %.cpp
 	@echo Compiling $< ...
 	$(C++) -c $(CFLAGS) $(TFLAGS) $(PFLAGS) $(DEFINES) $(INCLUDES) $< -o $@ 2>> $(LOGFILE)
 
