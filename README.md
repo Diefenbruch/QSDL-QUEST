@@ -60,5 +60,4 @@ Example (replace [arch] with your architecture directory):
 5. Simulation run: /home/qsdl/srs/obj/[arch]/srs -vys -e 1 -z 100
 6. Validation run: /home/qsdl/srs/obj/[arch]/srs -vyr -e 1 -p 18 -t msc -u -i 1 -s bs
 7. Verification run: /home/qsdl/srs/obj/[arch]/srs -vyv -e 1 -p 18 -t msc -u -i 1 -s fs -r "[]<>inUDCon"
-
-
+8. Performance Evaluation & Visualization run: /home/qsdl/srs/obj/[arch]/srs -vy s -t pev -c srs.pev
