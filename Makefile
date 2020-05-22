@@ -298,11 +298,13 @@ SRCS =\
 
 OBJS = $(addprefix $(OBJDIR)/, $(SRCS:.cpp=.o))
 
-######################
-# 7. Makefileregeln: #
-######################
+##################################################
+# 7. Makefileregeln:                             #
+#    Abhängigkeiten hinter dem | Symbol sind     #
+#    logische aber keine Zeit-Abhängigkeiten!    #
+##################################################
 
-all: clean-rubbish $(OBJDIR) $(LOUTPUT) $(OUTPUT)
+all: clean-rubbish $(LOUTPUT) $(OUTPUT) | $(OBJDIR)
 
 $(OUTPUT): $(OBJS) $(LIBDIR)/libDS.a $(LIBDIR)/libCG.a $(LIBDIR)/libQP.a
 	@echo Linking $(OUTPUT) ...
@@ -316,7 +318,7 @@ $(LOUTPUT): $(OBJDIR)/Quest.o
 	$(AR) $(ARFLAGS) $(LOUTPUT) $(OBJDIR)/Quest.o \
 		2>> $(LOGFILE)
 
-$(OBJS): $(OBJDIR)
+$(OBJS): | $(OBJDIR)
 
 $(OBJDIR)/%.o: %.cpp
 	@echo Compiling $< ...
@@ -327,17 +329,17 @@ $(OBJBASEDIR):
 		echo Creating $(OBJBASEDIR) ...; \
 		$(MKDIR) $(OBJBASEDIR); fi
 
-$(OBJDIR): $(OBJBASEDIR)
+$(OBJDIR): | $(OBJBASEDIR)
 	@if [ ! \( -d $(OBJDIR) \) ]; then \
 		echo Creating $(OBJDIR) ...; \
 		$(MKDIR) $(OBJDIR); fi
 
-$(LIBDIR): 
+$(LIBDIR):
 	@if [ ! \( -d $(LIBDIR) \) ]; then \
 		echo Creating $(LIBDIR) ...; \
 		$(MKDIR) $(LIBDIR); fi
 
-$(BINDIR): 
+$(BINDIR):
 	@if [ ! \( -d $(BINDIR) \) ]; then \
 		echo Creating $(BINDIR) ...; \
 		$(MKDIR) $(BINDIR); fi
@@ -345,7 +347,7 @@ $(BINDIR):
 $(DEPFILE):
 	$(TOUCH) $(DEPFILE)
 
-install-lib: $(LOUTPUT) $(LIBDIR)
+install-lib: $(LOUTPUT) | $(LIBDIR)
 	@echo Deleting old library from $(LIBDIR) ...
 	-$(RM) $(LIBDIR)/$(LOUTPUT)
 	@echo Installing new library in $(LIBDIR) ...
@@ -360,7 +362,7 @@ install-includes: $(HEADERS)
 		$(CP)  $${X} $(INCDIR);\
 		$(CHMOD) 660 $(INCDIR)/$${X}; done
 
-install: install-lib install-includes $(OUTPUT) $(BINDIR)
+install: install-lib install-includes $(OUTPUT) | $(BINDIR)
 	@echo Installing $(OUTPUT) in $(BINDIR) ...
 	$(CP) $(OUTPUT) $(BINDIR)
 	@echo Stripping $(BINDIR)/$(notdir $(OUTPUT)) ...
